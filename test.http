@@ -1,0 +1,11 @@
+POST http://localhost:4004/empSRV/EmployeeBasicDetails
+Content-Type: application/json
+
+{
+    "ID": "010bc012-dac9-4098-a98d-48804844caff",
+    "fName": "Avik",
+    "lName": "Saha",
+    "emailAddress": "shaancse08@gmail.com",
+    "empAddress_ID": null,
+    "empSalary_ID": null
+}
