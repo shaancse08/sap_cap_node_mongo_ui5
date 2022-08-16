@@ -21,6 +21,8 @@ const createEmployeeBasicDetails = async (req) => {
   } catch (error) {
     console.log(error.message);
   }
+
+  return;
 };
 
 const getEmployeeBasicDetails = (req) => {
