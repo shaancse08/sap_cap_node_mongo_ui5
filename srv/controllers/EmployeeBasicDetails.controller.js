@@ -3,10 +3,6 @@ const mongoose = require("mongoose");
 
 const createEmployeeBasicDetails = async (req) => {
   try {
-    const con = await mongoose.connect(
-      "mongodb+srv://shaancse08:Saphana123@capmcluster.7ngfewj.mongodb.net/?retryWrites=true&w=majority"
-    );
-    console.log(`Mongo DB connected at ${con.connection.host}`);
     const { ID, fName, lName, emailAddress, empAddress_ID, empSalary_ID } =
       req.data;
     const newEmployee = new EmployeeBasicDetails({
