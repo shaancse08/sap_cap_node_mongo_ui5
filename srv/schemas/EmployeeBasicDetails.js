@@ -9,11 +9,43 @@ const mongoose = require("mongoose");
  */
 
 const EmployeeBasicDetailsSchema = new mongoose.Schema({
-  ID: String,
-  fName: String,
-  lName: String,
+  ID: {
+    type: String,
+    required: [true, "Unique ID is mandatory Parameter"],
+  },
+  fName: {
+    type: String,
+    required: [true, "First Name is a mandatory Parameter"],
+    maxLength: 12,
+  },
+  lName: {
+    type: String,
+    required: [true, "Last Name is a mandatory Parameter"],
+    maxLength: 12,
+  },
+  emailAddress: {
+    type: String,
+    required: [true, "EMail address is mandatory Parameter"],
+    unique: [true, "Email has to be unique"],
+    validate: {
+      validator: function (v) {
+        return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(v);
+      },
+      message: "Please enter a valid email",
+    },
+    lowercase: true,
+  },
   empAddress_ID: String,
   empSalary_ID: String,
+  createdAt: {
+    type: Date,
+    immutable: true,
+    default: () => Date().now,
+  },
+  updatedAt: {
+    type: Date,
+    default: () => Date().now,
+  },
 });
 
 module.exports = mongoose.model(

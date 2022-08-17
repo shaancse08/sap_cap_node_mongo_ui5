@@ -2,27 +2,19 @@ const EmployeeBasicDetails = require("../schemas/EmployeeBasicDetails");
 const mongoose = require("mongoose");
 
 const createEmployeeBasicDetails = async (req) => {
+  const oPayload = req.data;
   try {
-    const { ID, fName, lName, emailAddress, empAddress_ID, empSalary_ID } =
-      req.data;
-    const newEmployee = new EmployeeBasicDetails({
-      ID,
-      fName,
-      lName,
-      emailAddress,
-      empAddress_ID,
-      empSalary_ID,
-    });
+    const newEmployee = new EmployeeBasicDetails(oPayload);
     await newEmployee.save();
   } catch (error) {
-    console.log(error.message);
+    return req.reject("400", error.message);
   }
-
-  return;
+  return oPayload;
 };
 
 const getEmployeeBasicDetails = (req) => {
-  console.log("Read Done for EmployeeBasic details");
+  const employeeBasicDetails = EmployeeBasicDetails.find();
+  return employeeBasicDetails;
 };
 
 const updateEmployeeBasicDetails = (req) => {
