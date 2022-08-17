@@ -1,5 +1,6 @@
 const EmployeeBasicDetails = require("../schemas/EmployeeBasicDetails");
 const mongoose = require("mongoose");
+const { rawListeners } = require("../schemas/EmployeeBasicDetails");
 
 const createEmployeeBasicDetails = async (req) => {
   const oPayload = req.data;
@@ -17,8 +18,20 @@ const getEmployeeBasicDetails = (req) => {
   return employeeBasicDetails;
 };
 
-const updateEmployeeBasicDetails = (req) => {
-  // Update Code Goes Here
+const updateEmployeeBasicDetails = async (req) => {
+  let oPayload = req.data;
+  let employeeDetails = await EmployeeBasicDetails.findOne({
+    ID: oPayload.ID,
+  }).exec();
+  for (const empDtls in oPayload) {
+    if (empDtls !== "ID") {
+      employeeDetails[empDtls] = oPayload[empDtls];
+    }
+  }
+
+  const updatedData = await EmployeeBasicDetails.save();
+
+  return employeeDetails;
 };
 
 const deleteEmployeeDetails = (req) => {

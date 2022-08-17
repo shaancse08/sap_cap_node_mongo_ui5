@@ -6,6 +6,11 @@ const mongoose = require("mongoose");
  * To create Schema we use mongoose.Schema(Object with key pair values) and the
  * object shows the field description and field type.
  * To create model we use mongoose.model("Table_name", created_Schema_Name).
+ * Required: Parameter is to make the field mndatory
+ * maxLength: Will check the maximum length of the String value
+ * unique: Unique will make the value unique like emailid or username
+ * immutable: This will make the value unchanged like created at once it is done no one can change
+ * default: To make the default value
  */
 
 const EmployeeBasicDetailsSchema = new mongoose.Schema({
