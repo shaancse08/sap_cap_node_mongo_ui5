@@ -9,15 +9,45 @@ const mongoose = require("mongoose");
  */
 
 const EmployeeAddressSchema = new mongoose.Schema({
-  ID: String,
-  employeeID: String,
-  city: String,
-  state: String,
-  address1: String,
+  ID: {
+    type: String,
+    unique: [true, "ID is mandatory parameter"],
+    required: true,
+  },
+  employeeID: {
+    type: String,
+    required: true,
+  },
+  city: {
+    type: String,
+    required: [true, "City is mandatory Parameter"],
+  },
+  state: {
+    type: String,
+    required: [true, "state is mandatory"],
+  },
+  address1: {
+    type: String,
+    required: [true, "Address1 is mandatory"],
+  },
   address2: String,
-  country: String,
-  pincode: Number,
-  addressUpdatedOn: Date,
+  country: {
+    type: String,
+    required: [true, "Country is mandatory"],
+  },
+  pincode: {
+    type: Number,
+    required: [true, "Pincode is mandatory"],
+  },
+  addressCreatedOn: {
+    type: Date,
+    default: () => Date().now,
+    immutable: true,
+  },
+  addressUpdatedOn: {
+    type: Date,
+    default: () => Date().now,
+  },
 });
 
 module.exports = mongoose.model("EmployeeAddress", EmployeeAddressSchema);

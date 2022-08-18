@@ -25,6 +25,7 @@ context EmployeeDetails {
             address2         : String;
             country          : String;
             pincode          : Integer;
+            addressCreatedOn: Date;
             addressUpdatedOn : Date;
     }
 
