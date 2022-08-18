@@ -1,0 +1,27 @@
+### Create EmployeeBasic Details
+POST http://localhost:4004/empSRV/EmployeeAddress
+Content-Type: application/json
+
+{
+    "fName": "Avik",
+    "lName": "Saha",
+    "emailAddress": "shaancse08@gmail.com",
+    "empAddress_ID": null,
+    "empSalary_ID": null
+}
+
+
+
+### Get Employee Details
+GET http://localhost:4004/empSRV/EmployeeAddress HTTP/1.1
+
+### Update Data
+PATCH  http://localhost:4004/empSRV/EmployeeAddress(c3ddb2f3-6579-4d29-8a61-d1c5c6a02957) HTTP/1.1
+Content-Type: application/json
+
+{
+    "fName": "Ram"
+}
+
+### Delete Employee Basic Details
+DELETE http://localhost:4004/empSRV/EmployeeAddress(c3ddb2f3-6579-4d29-8a61-d1c5c6a02957) HTTP/1.1
